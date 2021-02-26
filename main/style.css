@@ -14,5 +14,9 @@
             justify-content: center;
   }
 
+  .body-text, p {
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+
   
   
