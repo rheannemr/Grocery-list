@@ -1,4 +1,18 @@
-header {
-    width:100%;
-    background-image:url("");
-}
+.hero-section {
+    background: url("../assets/img/headerC.png") 50% no-repeat;
+    background-size: cover;
+    height: 80vh;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  
+  
