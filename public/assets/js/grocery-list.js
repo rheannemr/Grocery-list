@@ -135,12 +135,12 @@ const getIngredients = () => {
     getIngredients();
 
     const insertIngredient = (ingredientData) => {
-        fetch('/api/grocery-list', {
-            method: 'POST', 
+        fetch('/api/grocery-list/:id', {
+            method: 'PUT', 
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(ingredientData),
+           
         })
             .then(getIngredients)
             .catch((err) => console.error(err));
