@@ -3,7 +3,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./routes/grocery_routes.js');
 const app = express();
 
-const PORT = process.env.PORT || 3306 ;
+const PORT = process.env.PORT || 8080 ;
 
 app.use(express.static(__dirname + '/public/'));
 app.use(express.json());
