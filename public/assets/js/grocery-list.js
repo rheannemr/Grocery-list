@@ -133,3 +133,14 @@ const getIngredients = () => {
 
     // get list of ingredients
     getIngredients();
+
+    const placeIngredient = (ingredientData) => {
+        fetch('/api/grocery-list/:id', {
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(placeIngredient)
+            .catch((err) => console.error(err));
+    };
