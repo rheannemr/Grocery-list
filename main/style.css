@@ -14,7 +14,7 @@
             justify-content: center;
   }
 
-  .body-text, p {
+  .ingredients, .recipes, p {
     font-family: 'Montserrat Alternates', sans-serif;
   }
 
