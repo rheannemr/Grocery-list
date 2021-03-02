@@ -142,8 +142,6 @@ const containsClass = listItem.classList.contains("editMode");
         listItem.classList.toggle("editMode");
 }
 
-
-
 // Delete item.
 const deleteItem = function() {
         console.log("Delete item...");
