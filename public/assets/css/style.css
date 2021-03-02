@@ -14,8 +14,93 @@
             justify-content: center;
   }
 
-  .ingredients, .recipes, p {
+  .ingredients, .recipes, p, ul {
     font-family: 'Montserrat Alternates', sans-serif;
+  }
+
+
+  .container {
+    display: block;
+    margin: 10px;
+  }
+
+  li * {
+    float: left;
+  }
+  li, h3 {
+    clear:both;
+    list-style:none;
+  }
+  
+  input, button {
+    outline:darksalmon;
+  }
+
+  button {
+    background: none;
+    border: 0px;
+    color: rgb(255, 89, 0);
+    font-size: 15px;
+    width: 60px;
+    margin: 10px 0 0;
+    cursor: pointer;
+  }
+  
+  /* New item */
+
+  label[for='new-item'] {
+    display: block;
+    margin: 10px;
+  }
+  input#new-item {
+    float: left;
+    width: 850px;
+  }
+  
+  p > button:hover, button:hover {
+    color: #ff7b88;
+  }
+  
+  /* Item list */
+
+  li {
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  li > input[type="checkbox"] {
+    margin: 0 10px;
+    top: 15px;
+    position: relative;
+  }
+
+  li > label {
+    font-size: 18px;
+    line-height: 40px;
+    width: 237px;
+    padding: 0 0 0 11px;
+  }
+
+  li >  input[type="text"] {
+    width: 226px;
+  }
+
+  li > .delete:hover {
+    color: #CF2323;
+  }
+  
+  /* Edit Item */
+  
+  ul li input[type=text] {
+    display:none;
+  } 
+  
+  ul li.editMode input[type=text] {
+    display:block;
+  }
+  
+ ul li.editMode label {
+    display:none;
   }
 
   
