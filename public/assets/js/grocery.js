@@ -3,9 +3,11 @@
 // On click, That button will take in the name of the ingredient by getting the value of the element that has the name of the ingredient
 // That value will be passed through the API URL
 // Access the ID of the ingredient and pass it through the 2nd API (Get Ingredient Info)
+$('#nutrition').on('click', getIngredientInfo());
 
-
-let ingredient = "apple"
+function getIngredientInfo(event){
+    event.preventDefault();
+let ingredient = $('#new-item').val().trim();
 apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
 let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
 $.ajax({
@@ -31,6 +33,7 @@ $.ajax({
     });
 
 });
+}
 // moved 2nd api into the .then of the first api call
 
 // API - get ingredient information
