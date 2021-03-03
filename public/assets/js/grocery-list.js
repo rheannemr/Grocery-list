@@ -182,7 +182,6 @@ const ajaxRequest = function() {
 // The glue to hold it all together.
 
 // Set the click handler to the addItem function.
-addButton.onclick = addItem;
 addButton.addEventListener("click", addItem);
 addButton.addEventListener("click", ajaxRequest);
 
