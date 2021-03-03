@@ -31,7 +31,7 @@ $.ajax({
     });
 
 });
-
+// moved 2nd api into the .then of the first api call
 
 // API - get ingredient information
 // This API will take in the ID from the previous API in order to access various information on that ingredient
