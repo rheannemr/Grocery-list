@@ -34,8 +34,8 @@ const getIngredients = () => {
         for (let i = 0; i < data.length; i++) {
             addRows.push(createIngredientRow(data[i]));
        }
-       renderIngredientsList(addRows);
-       ingredientInput.value = ''; 
+    //    renderIngredientsList(addRows);
+    //    ingredientInput.value = ''; 
         })
         .catch((error) => console.error('Error:', error))
     };

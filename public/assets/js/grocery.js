@@ -43,15 +43,30 @@ $.ajax({
 
 
 
+console.log("get api call")
 // API - search recipe by ingredients
-let ingredients = "lamb,+sauce,+pepper"
-apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
-let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
-$.ajax({
-    url: searchRecipe,
-    method: "GET"
-}).then(function (response) {
-    console.log('response for recipe based on ingridents input: ', response);
-
+$("#search_submit").click(function (event) {
+    event.preventDefault();
+    var lookupIngredient = $("#search").val();
+    console.log(lookupIngredient)
+ 
+    console.log("click")
+    lookupRecipe(lookupIngredient);
 
 })
+
+function lookupRecipe(ingredients) {
+
+    // let ingredients = "lamb,+sauce,+pepper"
+    apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+    let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
+    $.ajax({
+        url: searchRecipe,
+        method: "GET"
+    }).then(function (response) {
+        console.log('response for recipe based on ingridents input: ', response);
+        // var city = (response.name);
+        // var cityEl = $("<div>").text(city);
+        // $("#city-view").append(cityEl);
+    })
+}

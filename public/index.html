@@ -2,75 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Everyday Helper</title>
-    <!--CSS Link-->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Compressed Foundation JS -->
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-    integrity="sha256-y8J9M8tizbfX7Vhi5x1ikNeZ/WEcwwnlTvOaloXTcQw=" crossorigin="anonymous"></script>
-    <!--Foundation CDN-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-    integrity="ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    <!--Google Font-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap" rel="stylesheet">
-    <!--jQuery CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Everyday Helper</title>
+  <!--CSS Link-->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- Compressed Foundation JS -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+    integrity="sha256-y8J9M8tizbfX7Vhi5x1ikNeZ/WEcwwnlTvOaloXTcQw=" crossorigin="anonymous"></script> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+      integrity="ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous"> -->
+
+  <!--Google Font-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!--Grocery List Header/Logo-->
-    <header>
-        <section class="hero-section"></section>
-    </header>
+  <!--Grocery List Header/Logo-->
+  <header>
+    <section class="hero-section"></section>
+  </header>
 
-    <section>
-        <!--Groceries to buy section-->
-        <div class="grid-x">
-          <div class="cell small-6">
-            <div class="card-divider">
-              <h2 class="ingredients">What to buy...</h2>
-            </div>
-
-            <div class="container">
-              <p>
-                <input id="new-item" placeholder="Ingredients, Food, Drinks, etc." type="text"></input>
-                <button>Add Item</button>
-              </p>
-              <ul id="groceries">
-              </ul>
-            </div>
-        </div>
-
-        <!--What's in my fridge section-->
-        <div class="cell small-6">
-          <div class="card-divider">
-            <h2 class="ingredients">What's in my fridge!</h2>
-          </div>
-            <div class="container">
-              <ul id="in-fridge">
-              </ul>
-            </div>
-        </div>
-    </section>
-
-    <!--Recipe section-->
-    <div class="card large-auto">
+  <section>
+    <!--Groceries to buy section-->
+    <div class="grid-x">
+      <div class="cell small-6">
         <div class="card-divider">
-          <h2 class="recipes">Recipes</h2>
+          <h2 class="ingredients">What to buy...</h2>
         </div>
-        <div id="wrap">
-          <form action="" autocomplete="on">
-          <input id="search" name="search" type="text" placeholder="What're we looking for?"><input id="search_submit" value="Rechercher" type="submit">
-          </form>
-        </div>
-    </div>
 
-    <!--Connection to functionality of sections above-->
-    <script src="./assets/js/grocery-list.js"></script>
+        <div class="container">
+          <p>
+            <input id="new-item" placeholder="Ingredients, Food, Drinks, etc." type="text"></input>
+            <button>Add Item</button>
+          </p>
+          <ul id="groceries">
+          </ul>
+        </div>
+      </div>
+
+      <!--What's in my fridge section-->
+      <div class="cell small-6">
+        <div class="card-divider">
+          <h2 class="ingredients">What's in my fridge!</h2>
+        </div>
+        <div class="container">
+          <ul id="in-fridge">
+          </ul>
+        </div>
+      </div>
+  </section>
+
+  <!--Recipe section-->
+  <div class="card large-auto">
+    <div class="card-divider">
+      <h2 class="recipes">Recipes</h2>
+    </div>
+    <div id="wrap">
+      <form action="" autocomplete="on">
+        <input id="search" name="search" type="text" placeholder="What're we looking for?"><input id="search_submit"
+          value="Rechercher" type="submit">
+      </form>
+    </div>
+    <div id="23"></div>
+  </div>
+
+  <!--jQuery CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--Foundation CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/foundation.min.js"
+    integrity="sha512-9cXmvmK1gIDw3Tol6Xg/1SUls/CvBMgedu1aDjT519sQzy7jk+LoezyQqlzClW2LgXww4xEyuqtofg7PtWteLQ=="
+    crossorigin="anonymous"></script>
+  <!--Connection to functionality of sections above-->
+  <script src="./assets/js/grocery-list.js"></script>
+  <script src="./assets/js/grocery.js"></script>
 
 </body>
+
 </html>
