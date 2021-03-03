@@ -1,5 +1,8 @@
 // Add Event listner
 
+// VS code automatically added the below line?
+// const { get } = require("../../../routes/html-routes");
+
 
 // variables that grab elements from the DOM so we can use/manipulate what happens with ingredient inputs
 // const ingredientInput = document.getElementByID('ingredient-name');
@@ -202,6 +205,11 @@ const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
 }
 
 
+// Nutrition Button Event listener
+
+// document.getElementsByClassName("nutrition").onclick = ingredientApiSearch;
+
+
 // Commented out because I don't know if we need it... (lines 206-218)
 
 //     // Cycle over groceriesToBuy ul list items
@@ -231,6 +239,35 @@ $.ajax({
     method: "GET"
 }).then(function (response) {
     console.log('response for recipe based on ingridents input: ', response);
-
-
 })
+
+
+
+// API - search ingredients
+
+let ingredient = 'apples'
+apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
+$.ajax({
+    url: searchIngredient,
+    method: "GET"
+}).then(function (response) {
+    console.log('here is the response for ingredient search based off string: ', response);
+    console.log('finding id: ', response.results[0].id);
+    let id = response.results[0].id;
+    let amount = 1
+    let unit = 'piece'
+    apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+    let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
+
+    $.ajax({
+        url: getIngredientInfo,
+        method: "GET"
+    }).then(function (response) {
+        console.log('here is the response: ', response);
+        console.log('ingredient name: ', response.name);
+
+    });
+
+});
+
