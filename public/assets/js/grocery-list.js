@@ -217,3 +217,20 @@ const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
 //     // Bind events to list items children(backToGroceryList)
 //         bindItemEvents(whatsInTheFridge.children[i],backToGroceryList);
 // }
+
+
+
+
+
+// API - search recipe by ingredients
+let ingredients = "lamb,+sauce,+pepper"
+apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
+$.ajax({
+    url: searchRecipe,
+    method: "GET"
+}).then(function (response) {
+    console.log('response for recipe based on ingridents input: ', response);
+
+
+})
