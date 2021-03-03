@@ -80,6 +80,8 @@ const createNewItemElement = function(taskString){
     const label = document.createElement("label");
     // input (text)
     const editInput = document.createElement("input");
+    // nutrition button
+    const nutritionFacts = document.createElement("button");
     // button.edit
     const editButton = document.createElement("button");
     // button.delete
@@ -90,7 +92,8 @@ const createNewItemElement = function(taskString){
     // Each elements, needs appending
     checkBox.type = "checkbox";
     editInput.type = "text";
-
+    nutritionFacts.innerText = "Nutrition";
+    nutritionFacts.className = "nutrition";
     editButton.innerText = "Edit"; // innerText encodes special characters, HTML does not.
     editButton.className = "edit";
     deleteButton.innerText = "Delete";
@@ -100,6 +103,7 @@ const createNewItemElement = function(taskString){
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
     listItem.appendChild(editInput);
+    listItem.appendChild(nutritionFacts);
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
     return listItem;
