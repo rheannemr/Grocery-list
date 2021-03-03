@@ -42,6 +42,7 @@ This project is created with:
 - [MySQL](https://www.mysql.com/)
 - [Sequelize](https://sequelize.org/)
 - [Node](https://www.nodesoftware.com/?gclid=Cj0KCQiA7NKBBhDBARIsAHbXCB6tjiRB0Swb6tW761XCKEBqzP7vkz6NTptfe23zj-wRIt9y4L5XD7IaAtdREALw_wcB)
+- [ESlint](https://eslint.org/)
 - [HTML](https://html.com/)
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 
