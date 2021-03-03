@@ -206,8 +206,8 @@ const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
 
 
 // Nutrition Button Event listener
-
-// document.getElementsByClassName("nutrition").onclick = ingredientApiSearch;
+let nutritionButtonAddListener = document.getElementsByClassName("nutrition");
+nutritionButtonAddListener.addEventListener("click", getIngredientInfoAjaxCall());
 
 
 // Commented out because I don't know if we need it... (lines 206-218)
@@ -231,6 +231,7 @@ const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
 
 
 // API - search recipe by ingredients
+
 let ingredients = "lamb,+sauce,+pepper"
 apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
 let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
@@ -244,8 +245,9 @@ $.ajax({
 
 
 // API - search ingredients
-
-let ingredient = 'apples'
+function getIngredientInfoAjaxCall() {
+// let ingredient = document.querySelector("label").val().trim();
+let ingredient = 'grapes';
 apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
 let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
 $.ajax({
@@ -270,4 +272,4 @@ $.ajax({
     });
 
 });
-
+}
