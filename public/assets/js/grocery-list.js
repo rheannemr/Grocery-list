@@ -11,7 +11,7 @@
 // Create new ingredient to add to the List
 const insertIngredient = (ingredientData) => {
     fetch('/api/grocery-list', {
-        method: 'POST', 
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -26,44 +26,44 @@ const getIngredients = () => {
     fetch('/api/grocery-list', {
         method: 'GET',
         headers: {
-            'Content-Type' : 'application/json',
+            'Content-Type': 'application/json',
         },
     }).then((res) => res.json())
-    .then((data) => {
-        const addRows = [];
-        for (let i = 0; i < data.length; i++) {
-            addRows.push(createIngredientRow(data[i]));
-       }
-       renderIngredientsList(addRows);
-       ingredientInput.value = ''; 
+        .then((data) => {
+            const addRows = [];
+            for (let i = 0; i < data.length; i++) {
+                addRows.push(createIngredientRow(data[i]));
+            }
+            //    renderIngredientsList(addRows);
+            //    ingredientInput.value = ''; 
         })
         .catch((error) => console.error('Error:', error))
-    };
+};
 
-    // Handle delete ingredient button
+// Handle delete ingredient button
 const handleDeleteIngredientButton = (e) => {
     const { id } = e.target.parentElement.parentElement;
     fetch(`/api/grocery-list/${id}`, {
         method: 'DELETE',
         headers: {
-            'Content-Type' :'application/json',
+            'Content-Type': 'application/json',
         },
-        
+
     }).then(getIngredients);
 }
-    // Get list of ingredients
-    getIngredients();
+// Get list of ingredients
+getIngredients();
 
-    const placeIngredient = (ingredientData) => {
-        fetch('/api/grocery-list/:id', {
-            method: 'PUT', 
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(placeIngredient)
-            .catch((err) => console.error(err));
-    };
+const placeIngredient = (ingredientData) => {
+    fetch('/api/grocery-list/:id', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(placeIngredient)
+        .catch((err) => console.error(err));
+};
 
 
 // What to buy + What's in my fridge functionality
@@ -74,7 +74,7 @@ const whatsInTheFridge = document.getElementById("in-fridge"); // in-fridge
 
 
 // New task list item
-const createNewItemElement = function(taskString){
+const createNewItemElement = function (taskString) {
 
     const listItem = document.createElement("li");
     // input (checkbox)
@@ -112,7 +112,7 @@ const createNewItemElement = function(taskString){
     return listItem;
 }
 
-const addItem = function() {
+const addItem = function () {
     console.log("Add item...");
     // Create a new list item with the text from the #new-item:
     const listItem = createNewItemElement(itemInput.value);
@@ -121,64 +121,64 @@ const addItem = function() {
     groceriesToBuy.appendChild(listItem);
     bindItemEvents(listItem, itemBought);
 
-    itemInput.value="";
+    itemInput.value = "";
 }
 
 // Edit an existing item
-const editItem = function() {
-console.log("Edit item...");
-console.log("Change 'edit' to 'save'");
+const editItem = function () {
+    console.log("Edit item...");
+    console.log("Change 'edit' to 'save'");
 
-const listItem = this.parentNode;
+    const listItem = this.parentNode;
 
-const editInput = listItem.querySelector('input[type=text]');
-const label = listItem.querySelector("label");
-const containsClass = listItem.classList.contains("editMode");
-        // If class of the parent is .editmode
-        if(containsClass) {
+    const editInput = listItem.querySelector('input[type=text]');
+    const label = listItem.querySelector("label");
+    const containsClass = listItem.classList.contains("editMode");
+    // If class of the parent is .editmode
+    if (containsClass) {
 
         // switch to .editmode
         // label becomes the inputs value.
-            label.innerText=editInput.value;
-        } else {
-            editInput.value=label.innerText;
-        }
+        label.innerText = editInput.value;
+    } else {
+        editInput.value = label.innerText;
+    }
 
-        // toggle .editmode on the parent.
-        listItem.classList.toggle("editMode");
+    // toggle .editmode on the parent.
+    listItem.classList.toggle("editMode");
 }
 
 // Delete item
-const deleteItem = function() {
-        console.log("Delete item...");
-        const listItem = this.parentNode;
-        const ul = listItem.parentNode;
-        // Remove the parent list item from the ul.
-        ul.removeChild(listItem);
+const deleteItem = function () {
+    console.log("Delete item...");
+    const listItem = this.parentNode;
+    const ul = listItem.parentNode;
+    // Remove the parent list item from the ul.
+    ul.removeChild(listItem);
 
 }
 
 // Mark task completed
-const itemBought = function() {
-        console.log("Move to fridge...");
-    
+const itemBought = function () {
+    console.log("Move to fridge...");
+
     // Append the item to the #in-fridge
     const listItem = this.parentNode;
     whatsInTheFridge.appendChild(listItem);
-                bindItemEvents(listItem, backToGroceryList);
+    bindItemEvents(listItem, backToGroceryList);
 }
 
-const backToGroceryList = function() {
-        console.log("Move back to groceries to buy...");
-        // Item is finished/eaten and needs to be bought again
-        // When the checkbox is unchecked, append the item to the #groceries
-        const listItem = this.parentNode;
-        groceriesToBuy.appendChild(listItem);
-            bindItemEvents(listItem, itemBought);
+const backToGroceryList = function () {
+    console.log("Move back to groceries to buy...");
+    // Item is finished/eaten and needs to be bought again
+    // When the checkbox is unchecked, append the item to the #groceries
+    const listItem = this.parentNode;
+    groceriesToBuy.appendChild(listItem);
+    bindItemEvents(listItem, itemBought);
 }
 
 // I think this is where we add AJAX calls?
-const ajaxRequest = function() {
+const ajaxRequest = function () {
     console.log("AJAX Request");
 }
 
@@ -188,7 +188,7 @@ const ajaxRequest = function() {
 addButton.addEventListener("click", addItem);
 addButton.addEventListener("click", ajaxRequest);
 
-const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
+const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
     console.log("bind list item events");
     // Select ListItems children
     const checkBox = taskListItem.querySelector("input[type=checkbox]");
@@ -199,15 +199,15 @@ const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
     // Bind editItem to edit button.
     editButton.onclick = editItem;
     // Bind deleteItem to delete button.
-    deleteButton.onclick = deleteItem; 
+    deleteButton.onclick = deleteItem;
     // Bind itemBought to checkBoxEventHandler.
-    checkBox.onchange = checkBoxEventHandler;       
+    checkBox.onchange = checkBoxEventHandler;
 }
 
 
 // Nutrition Button Event listener
 let nutritionButtonAddListener = document.getElementsByClassName("nutrition");
-nutritionButtonAddListener.addEventListener("click", getIngredientInfoAjaxCall());
+// nutritionButtonAddListener.addEventListener("click", getIngredientInfoAjaxCall());
 
 
 // Commented out because I don't know if we need it... (lines 206-218)
@@ -231,45 +231,53 @@ nutritionButtonAddListener.addEventListener("click", getIngredientInfoAjaxCall()
 
 
 // API - search recipe by ingredients
+$("#search_submit").on("click", function (event) {
+    event.preventDefault();
+    lookupRecipe();
+});
 
-let ingredients = "lamb,+sauce,+pepper"
-apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
-let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
-$.ajax({
-    url: searchRecipe,
-    method: "GET"
-}).then(function (response) {
-    console.log('response for recipe based on ingridents input: ', response);
-})
+function lookupRecipe() {
+    var ingredients = $("#search").val();
+    apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+    let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
+    $.ajax({
+        url: searchRecipe,
+        method: "GET"
+    }).then(function (response) {
+        console.log('response for recipe based on ingridents input: ', response);
+
+    })
+}
 
 
 
 // API - search ingredients
 function getIngredientInfoAjaxCall() {
-// let ingredient = document.querySelector("label").val().trim();
-let ingredient = 'grapes';
-apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
-let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
-$.ajax({
-    url: searchIngredient,
-    method: "GET"
-}).then(function (response) {
-    console.log('here is the response for ingredient search based off string: ', response);
-    console.log('finding id: ', response.results[0].id);
-    let id = response.results[0].id;
-    let amount = 1
-    let unit = 'piece'
+    // let ingredient = document.querySelector("label").val().trim();
+    let ingredient = 'grapes';
     apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
-    let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
-
+    let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
     $.ajax({
-        url: getIngredientInfo,
+        url: searchIngredient,
         method: "GET"
     }).then(function (response) {
-        console.log('here is the response: ', response);
-        console.log('ingredient name: ', response.name);
+        console.log('here is the response for ingredient search based off string: ', response);
+        console.log('finding id: ', response.results[0].id);
+        let id = response.results[0].id;
+        let amount = 1
+        let unit = 'piece'
+        apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+        let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
+
+        $.ajax({
+            url: getIngredientInfo,
+            method: "GET"
+        }).then(function (response) {
+            console.log('here is the response: ', response);
+            console.log('ingredient name: ', response.name);
+
+        });
 
     });
+};
 
-});
-}
