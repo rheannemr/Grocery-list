@@ -47,7 +47,7 @@ This project is created with:
 
 APIs used:
 
--[Spoonacular](https://spoonacular.com/food-api)
+- [Spoonacular](https://spoonacular.com/food-api)
 
 ## Summary
 
@@ -55,9 +55,9 @@ Summary of Application
 
 ## Authors
 
-- Haley Halsey
-- Jiaqian Zhao
-- Rheanne Reyes
-- Tina Armstead
+- [Haley Halsey](https://github.com/hshalsey)
+- [Jiaqian Zhao](https://github.com/JZSweet)
+- [Rheanne Reyes](https://github.com/rheannemr)
+- [Tina Armstead](https://github.com/tmarmstead)
 
 ## License
