@@ -11,33 +11,31 @@ let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minP
 $.ajax({
     url: searchIngredient,
     method: "GET"
-    }).then(function(response) {
+}).then(function (response) {
     console.log('here is the response: ', response);
     console.log('finding id: ', response.results[0].id);
-    // console.log('img: ', response.img);
-    // console.log('id is: ', response.id);
-    // console.log('name: ', response.name);
+    let id = response.results[0].id;
+    let amount = 1
+    let unit = 'piece'
+    apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+    let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
+
+    $.ajax({
+        url: getIngredientInfo,
+        method: "GET"
+    }).then(function (response) {
+        console.log('here is the response: ', response);
+        console.log('name: ', response.name);
+        console.log('img: ', response.img);
+        // console.log('name: ', response.name);
     });
+
+});
 
 
 // API - get ingredient information
 // This API will take in the ID from the previous API in order to access various information on that ingredient
 // Thechosen information related to the selected ingredient will be appended/pushed to html to be displayed or alerted to the page
-let id = 9266
-let amount = 1
-let unit = 'piece'
-apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
-let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
-
-$.ajax({
-url: getIngredientInfo,
-method: "GET"
-}).then(function(response) {
-console.log('here is the response: ', response);
-console.log('name: ', response.name);
-console.log('img: ', response.img);
-// console.log('name: ', response.name);
-});  
 
 
 
@@ -48,8 +46,8 @@ let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingred
 $.ajax({
     url: searchRecipe,
     method: "GET"
-}).then(function(response) {
+}).then(function (response) {
     console.log('response for recipe based on ingridents input: ', response);
-    
-    
+
+
 })
