@@ -5,7 +5,7 @@
 // const ingredientInput = document.getElementByID('ingredient-name');
 // const groceryList = document.querySelector('');
 
-// Create new Ingrdient to add to the List
+// Create new ingredient to add to the List
 const insertIngredient = (ingredientData) => {
     fetch('/api/grocery-list', {
         method: 'POST', 
@@ -18,7 +18,7 @@ const insertIngredient = (ingredientData) => {
         .catch((err) => console.error(err));
 }
 
-// Get all the Ingredients
+// Get all the ingredients
 const getIngredients = () => {
     fetch('/api/grocery-list', {
         method: 'GET',
@@ -37,7 +37,7 @@ const getIngredients = () => {
         .catch((error) => console.error('Error:', error))
     };
 
-    // handle delete ingredient button
+    // Handle delete ingredient button
 const handleDeleteIngredientButton = (e) => {
     const { id } = e.target.parentElement.parentElement;
     fetch(`/api/grocery-list/${id}`, {
@@ -48,7 +48,7 @@ const handleDeleteIngredientButton = (e) => {
         
     }).then(getIngredients);
 }
-    // get list of ingredients
+    // Get list of ingredients
     getIngredients();
 
     const placeIngredient = (ingredientData) => {
@@ -63,7 +63,7 @@ const handleDeleteIngredientButton = (e) => {
     };
 
 
-// Groceries to buy + What's in my fridge functionality
+// What to buy + What's in my fridge functionality
 const itemInput = document.getElementById("new-item"); // Add a new item
 const addButton = document.getElementsByTagName("button")[0]; // First button
 const groceriesToBuy = document.getElementById("groceries"); // ul of #groceries
@@ -74,7 +74,6 @@ const whatsInTheFridge = document.getElementById("in-fridge"); // in-fridge
 const createNewItemElement = function(taskString){
 
     const listItem = document.createElement("li");
-
     // input (checkbox)
     const checkBox = document.createElement("input");
     // label
@@ -138,11 +137,11 @@ const containsClass = listItem.classList.contains("editMode");
             editInput.value=label.innerText;
         }
 
-        //toggle .editmode on the parent.
+        // toggle .editmode on the parent.
         listItem.classList.toggle("editMode");
 }
 
-// Delete item.
+// Delete item
 const deleteItem = function() {
         console.log("Delete item...");
         const listItem = this.parentNode;
@@ -156,7 +155,7 @@ const deleteItem = function() {
 const itemBought = function() {
         console.log("Move to fridge...");
     
-    //Append the item to the #in-fridge
+    // Append the item to the #in-fridge
     const listItem = this.parentNode;
     whatsInTheFridge.appendChild(listItem);
                 bindItemEvents(listItem, backToGroceryList);
@@ -171,45 +170,47 @@ const backToGroceryList = function() {
             bindItemEvents(listItem, itemBought);
 }
 
+// I think this is where we add AJAX calls?
 const ajaxRequest = function() {
     console.log("AJAX Request");
 }
 
-//The glue to hold it all together.
+// The glue to hold it all together.
 
-
-//Set the click handler to the addItem function.
+// Set the click handler to the addItem function.
 addButton.onclick = addItem;
 addButton.addEventListener("click", addItem);
 addButton.addEventListener("click", ajaxRequest);
 
-
-const bindItemEvents = function(taskListItem,checkBoxEventHandler) {
+const bindItemEvents = function(taskListItem, checkBoxEventHandler) {
     console.log("bind list item events");
-    //select ListItems children
+    // Select ListItems children
     const checkBox = taskListItem.querySelector("input[type=checkbox]");
     const editButton = taskListItem.querySelector("button.edit");
     const deleteButton = taskListItem.querySelector("button.delete");
 
 
-    //Bind editItem to edit button.
+    // Bind editItem to edit button.
     editButton.onclick = editItem;
-    //Bind deleteItem to delete button.
+    // Bind deleteItem to delete button.
     deleteButton.onclick = deleteItem; 
-    //Bind itemBought to checkBoxEventHandler.
+    // Bind itemBought to checkBoxEventHandler.
     checkBox.onchange = checkBoxEventHandler;       
 }
 
-    // Cycle over groceriesToBuy ul list items
-    for (var i=0; i<groceriesToBuy.children.length; i++){
 
-        //bind events to list items children(itemBought)
-        bindItemEvents(groceriesToBuy.children[i],itemBought);
-    }
+// Commented out because I don't know if we need it... (lines 206-218)
+
+//     // Cycle over groceriesToBuy ul list items
+//     for (var i=0; i<groceriesToBuy.children.length; i++){
+
+//         //bind events to list items children(itemBought)
+//         bindItemEvents(groceriesToBuy.children[i],itemBought);
+//     }
 
 
-    // Cycle over whatsInTheFridge ul list items
-    for (var i=0; i<whatsInTheFridge.children.length; i++) {
-    // Bind events to list items children(backToGroceryList)
-        bindItemEvents(whatsInTheFridge.children[i],backToGroceryList);
-}
+//     // Cycle over whatsInTheFridge ul list items
+//     for (var i=0; i<whatsInTheFridge.children.length; i++) {
+//     // Bind events to list items children(backToGroceryList)
+//         bindItemEvents(whatsInTheFridge.children[i],backToGroceryList);
+// }
