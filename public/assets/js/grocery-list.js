@@ -9,15 +9,23 @@
 // const groceryList = document.querySelector('');
 
 // Create new ingredient to add to the List
+const createIngredientRow = (obj) => {
+    const listItem = createNewItemElement(obj.name);
+
+    // Append listItem to groceriesToBuy
+    groceriesToBuy.appendChild(listItem);
+    bindItemEvents(listItem, itemBought);
+}
+
 const insertIngredient = (ingredientData) => {
-    fetch('/api/grocery-list', {
+    return fetch('/api/grocery-list', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(ingredientData),
     })
-        .then(getIngredients)
+        //.then(getIngredients)
         .catch((err) => console.error(err));
 }
 
@@ -112,16 +120,21 @@ const createNewItemElement = function (taskString) {
     return listItem;
 }
 
-const addItem = function () {
+const addItem = function() {
     console.log("Add item...");
-    // Create a new list item with the text from the #new-item:
+    insertIngredient({
+        name: itemInput.value,
+        inFridge: false
+    }).then(() => {
+        // Create a new list item with the text from the #new-item:
     const listItem = createNewItemElement(itemInput.value);
 
     // Append listItem to groceriesToBuy
     groceriesToBuy.appendChild(listItem);
     bindItemEvents(listItem, itemBought);
 
-    itemInput.value = "";
+    itemInput.value="";
+    })
 }
 
 // Edit an existing item

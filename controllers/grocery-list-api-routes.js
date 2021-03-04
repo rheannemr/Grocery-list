@@ -33,9 +33,13 @@ const router = require('express').Router();
         }).then((dbIngredients) => res.json(dbIngredients));
     });
 
-    router.put('/api/grocery-list/:id', function (req, res) {
-        
-        
-      });
+    router.put("/api/grocery-list/:id", function (req, res) {          
+        db.Ingredients.update(req.body, { where: { id: req.params.id }})
+        .then(function (dbIngredients) {
+            res.json(dbIngredients);
+        });
+});
+
+  
 
 module.exports = router;
