@@ -1,7 +1,7 @@
 const db = require('../models');
 const router = require('express').Router();
 
-    router.post('/grocery-list', (req, res) => {
+    router.post('/api/grocery-list', (req, res) => {
         // Create a Grocery List ingredient with the data available to us in req.body
         console.log(req.body);
         db.Ingredients.create(req.body).then((dbIngredients) => res.json(dbIngredients));
