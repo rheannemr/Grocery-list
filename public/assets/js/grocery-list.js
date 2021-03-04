@@ -207,6 +207,7 @@ const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
     const checkBox = taskListItem.querySelector("input[type=checkbox]");
     const editButton = taskListItem.querySelector("button.edit");
     const deleteButton = taskListItem.querySelector("button.delete");
+    const nutritionButton = taskListItem.querySelector("button.nutrition");
 
 
     // Bind editItem to edit button.
@@ -215,11 +216,13 @@ const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
     deleteButton.onclick = deleteItem;
     // Bind itemBought to checkBoxEventHandler.
     checkBox.onchange = checkBoxEventHandler;
+    // Bind nutrition button to getIngredientInfo.
+    nutritionButton.onclick = getIngredientInfoAjaxCall;
 }
 
 
 // Nutrition Button Event listener
-let nutritionButtonAddListener = document.getElementsByClassName("nutrition");
+// let nutritionButtonAddListener = document.getElementsByClassName("nutrition");
 // nutritionButtonAddListener.addEventListener("click", getIngredientInfoAjaxCall());
 
 
@@ -265,9 +268,9 @@ function lookupRecipe() {
 
 
 // API - search ingredients
-function getIngredientInfoAjaxCall() {
-    // let ingredient = document.querySelector("label").val().trim();
-    let ingredient = 'grapes';
+function getIngredientInfoAjaxCall(event) {
+
+    let ingredient = event.target.parentElement.querySelector("label").innerText;
     apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
     let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
     $.ajax({
@@ -288,8 +291,8 @@ function getIngredientInfoAjaxCall() {
         }).then(function (response) {
             console.log('here is the response: ', response);
             console.log('ingredient name: ', response.name);
-
-        });
+            alert('caloric info: ', JSON.stringify(response));
+;        });
 
     });
 };
