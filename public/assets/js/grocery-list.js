@@ -120,20 +120,20 @@ const createNewItemElement = function (taskString) {
     return listItem;
 }
 
-const addItem = function() {
+const addItem = function () {
     console.log("Add item...");
     insertIngredient({
         name: itemInput.value,
         inFridge: false
     }).then(() => {
         // Create a new list item with the text from the #new-item:
-    const listItem = createNewItemElement(itemInput.value);
+        const listItem = createNewItemElement(itemInput.value);
 
-    // Append listItem to groceriesToBuy
-    groceriesToBuy.appendChild(listItem);
-    bindItemEvents(listItem, itemBought);
+        // Append listItem to groceriesToBuy
+        groceriesToBuy.appendChild(listItem);
+        bindItemEvents(listItem, itemBought);
 
-    itemInput.value="";
+        itemInput.value = "";
     })
 }
 
@@ -220,12 +220,6 @@ const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
     nutritionButton.onclick = getIngredientInfoAjaxCall;
 }
 
-
-// Nutrition Button Event listener
-// let nutritionButtonAddListener = document.getElementsByClassName("nutrition");
-// nutritionButtonAddListener.addEventListener("click", getIngredientInfoAjaxCall());
-
-
 // Commented out because I don't know if we need it... (lines 206-218)
 
 //     // Cycle over groceriesToBuy ul list items
@@ -241,10 +235,6 @@ const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
 //     // Bind events to list items children(backToGroceryList)
 //         bindItemEvents(whatsInTheFridge.children[i],backToGroceryList);
 // }
-
-
-
-
 
 // API - search recipe by ingredients
 $("#search_submit").on("click", function (event) {
@@ -264,8 +254,6 @@ function lookupRecipe() {
 
     })
 }
-
-
 
 // API - search ingredients
 function getIngredientInfoAjaxCall(event) {
@@ -289,10 +277,16 @@ function getIngredientInfoAjaxCall(event) {
             url: getIngredientInfo,
             method: "GET"
         }).then(function (response) {
+            let proteinInfo = JSON.stringify(response.nutrition.caloricBreakdown.percentProtein);
+            let carbInfo = JSON.stringify(response.nutrition.caloricBreakdown.percentCarbs);
+            let fatInfo = JSON.stringify(response.nutrition.caloricBreakdown.percentFat)
+            console.log('percentProtein is: ', JSON.stringify(response.nutrition.caloricBreakdown.percentProtein));
             console.log('here is the response: ', response);
             console.log('ingredient name: ', response.name);
-            alert('caloric info: ', JSON.stringify(response));
-;        });
+            alert(`Caloric Breakdown for ${ingredient}:\n\n Percent Protein: ${proteinInfo} %\n Percent Carbs: ${carbInfo}%\n Percent Fat: ${fatInfo}`);
+            
+            ;
+        });
 
     });
 };
