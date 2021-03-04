@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": "Todayb4tomorrow",
+    "password": "89tkUm11!",
     "database": "grocerylist_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Todayb4tomorrow",
+    "password": "89tkUm11!",
     "database": "grocerylist_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Todayb4tomorrow",
+    "password": "89tkUm11!",
   
     "database": "grocerylist_db",
     "host": "127.0.0.1",
