@@ -31,7 +31,7 @@ const insertIngredient = (ingredientData) => {
 
 // Get all the ingredients
 const getIngredients = () => {
-    fetch('/api/grocery-list', {
+    fetch('/api/grocery-list/items', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

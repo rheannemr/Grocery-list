@@ -1,7 +1,7 @@
 const db = require('../models');
 const router = require('express').Router();
 
-    router.post('/api/grocery-list', (req, res) => {
+    router.post('/grocery-list', (req, res) => {
         // Create a Grocery List ingredient with the data available to us in req.body
         console.log(req.body);
         db.Ingredients.create(req.body).then((dbIngredients) => res.json(dbIngredients));
@@ -10,7 +10,7 @@ const router = require('express').Router();
 
 
     // Find all Grocery List ingredients and return them to the user with res.json
-    router.get('/api/grocery-list', (req, res) => {
+    router.get('/api/grocery-list/items', (req, res) => {
         db.Ingredients.findAll({}).then((dbIngredients) => res.json(dbIngredients));
     });
 
