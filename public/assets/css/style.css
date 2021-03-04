@@ -65,6 +65,11 @@
   p > button:hover, button:hover {
     color: #ff7b88;
   }
+
+  li > button:hover {
+    color: blue;
+
+  }
   
   /* Item list */
 

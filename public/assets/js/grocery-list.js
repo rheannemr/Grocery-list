@@ -109,6 +109,7 @@ const createNewItemElement = function(taskString){
     listItem.appendChild(nutritionFacts);
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
+    listItem.setAttribute('class', 'list-item');
     return listItem;
 }
 
@@ -246,8 +247,9 @@ $.ajax({
 
 // API - search ingredients
 function getIngredientInfoAjaxCall() {
-// let ingredient = document.querySelector("label").val().trim();
-let ingredient = 'grapes';
+let ingredient = document.getElementsByClassName('list-item').childNodes[1].innerHtml;
+// console.log('ingredient test: ', ingredientTest);
+// let ingredient = 'grapes';
 apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
 let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
 $.ajax({
