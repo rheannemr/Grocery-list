@@ -6,8 +6,7 @@ USE grocerylist_db;
 
 CREATE TABLE groceries (
     id INT NOT NULL AUTO_INCREMENT,
-    food VARCHAR(50) NOT NULL,
-    quantity INT NOT NULL,
-    purchased BOOLEAN DEFAULT false,
+    name VARCHAR(50) NOT NULL,
+    inFridge BOOLEAN DEFAULT false,
     PRIMARY KEY(id)
 );
