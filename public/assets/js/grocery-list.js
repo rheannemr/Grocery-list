@@ -9,8 +9,12 @@
 // const groceryList = document.querySelector('');
 
 // Create new ingredient to add to the List
+
+let addId = 0;
+
 const createIngredientRow = (obj) => {
-    const listItem = createNewItemElement(obj.name);
+    // const listItem = createNewItemElement(obj.name);
+    const listItem = createNewItemElement(obj, 'get');
 
     // Append listItem to groceriesToBuy
     groceriesToBuy.appendChild(listItem);
@@ -49,15 +53,19 @@ const getIngredients = () => {
 };
 
 // Handle delete ingredient button
-const handleDeleteIngredientButton = (e) => {
-    const { id } = e.target.parentElement.parentElement;
+const handleDeleteIngredientButton = (id) => {
+    // const { id } = e.target.parentElement.parentElement;
     fetch(`/api/grocery-list/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
         },
 
-    }).then(getIngredients);
+    }).then(() => {
+        // document.getElementById("groceries").innerHTML = "";
+        location.reload();
+        getIngredients;
+    });
 }
 // Get list of ingredients
 getIngredients();
@@ -83,7 +91,11 @@ const postRecipe = document.getElementById("postRecipe");
 
 
 // New task list item
-const createNewItemElement = function (taskString) {
+const createNewItemElement = function (taskString, type) {
+    console.log('taskString', taskString);
+    if (type == 'get') {
+        addId = addId < taskString.id ? taskString.id : addId;
+    }
 
     const listItem = document.createElement("li");
     // input (checkbox)
@@ -101,6 +113,14 @@ const createNewItemElement = function (taskString) {
 
     label.innerText = taskString;
 
+    if (type == 'get') {
+        label.innerText = taskString.name;
+        deleteButton.setAttribute("id", taskString.id);
+    } else if (type == 'add') {
+        label.innerText = taskString;
+        deleteButton.setAttribute("id", addId + 1);
+    }
+
     // Each elements, needs appending
     checkBox.type = "checkbox";
     editInput.type = "text";
@@ -110,6 +130,7 @@ const createNewItemElement = function (taskString) {
     editButton.className = "edit";
     deleteButton.innerText = "Delete";
     deleteButton.className = "delete";
+    // deleteButton.setAttribute("id", taskString.id);
 
     // and appending.
     listItem.appendChild(checkBox);
@@ -128,7 +149,7 @@ const addItem = function () {
         inFridge: false
     }).then(() => {
         // Create a new list item with the text from the #new-item:
-        const listItem = createNewItemElement(itemInput.value);
+        const listItem = createNewItemElement(itemInput.value, 'add');
 
         // Append listItem to groceriesToBuy
         groceriesToBuy.appendChild(listItem);
@@ -168,8 +189,9 @@ const deleteItem = function () {
     const listItem = this.parentNode;
     const ul = listItem.parentNode;
     // Remove the parent list item from the ul.
+    console.log('delete item id +++', this.id);
     ul.removeChild(listItem);
-
+    handleDeleteIngredientButton(this.id || 0);
 }
 
 // Mark task completed
