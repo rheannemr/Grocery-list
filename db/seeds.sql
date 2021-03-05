@@ -1,11 +1,11 @@
-INSERT INTO groceries (food, quantity, purchased)
-VALUES ('avocado', 2, true);
+INSERT INTO groceries (name, inFridge)
+VALUES ('avocado', true);
 
-INSERT INTO groceries (food, quantity, purchased)
-VALUES ('sharp cheddar', 1, true);
+INSERT INTO groceries (name, inFridge)
+VALUES ('sharp cheddar', true);
 
-INSERT INTO groceries (food, quantity, purchased)
-VALUES ('english muffins', 1, false);
+INSERT INTO groceries (name, inFridge)
+VALUES ('english muffins', false);
 
-INSERT INTO groceries (food, quantity, purchased)
-VALUES ('eggs', 3, true);
+INSERT INTO groceries (name, inFridge)
+VALUES ('eggs', true);
