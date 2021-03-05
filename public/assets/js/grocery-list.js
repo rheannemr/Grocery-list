@@ -244,7 +244,7 @@ $("#search_submit").on("click", function (event) {
 
 function lookupRecipe() {
     var ingredients = $("#search").val();
-    apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+    apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
     let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
     $.ajax({
         url: searchRecipe,
@@ -255,12 +255,23 @@ function lookupRecipe() {
     })
 }
 
+function extractNutrients(nutrients) {
+    let result = '';
+    const wantedNutrients = ['Calories', 'Sugar', 'Fiber', 'Carbohydrates', 'Sodium', 'Protein', 'Saturated  Fat'];
+    for (const nutrient of nutrients) {
+        if (wantedNutrients.includes(nutrient.title)) {
+            result = result + `${nutrient.title}: ${nutrient.amount}\n`;
+        }
+    }
+    return result;
+}
+
 // API - search ingredients
 function getIngredientInfoAjaxCall(event) {
 
     let ingredient = event.target.parentElement.querySelector("label").innerText;
-    apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
-    let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=fd41c46f4fa7436c8570c46ddb3743ec&=&query=${ingredient}`
+    apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
+    let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=${apiKey}&=&query=${ingredient}`
     $.ajax({
         url: searchIngredient,
         method: "GET"
@@ -270,22 +281,16 @@ function getIngredientInfoAjaxCall(event) {
         let id = response.results[0].id;
         let amount = 1
         let unit = 'piece'
-        apiKey = 'fd41c46f4fa7436c8570c46ddb3743ec'
+        apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
         let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
 
         $.ajax({
             url: getIngredientInfo,
             method: "GET"
         }).then(function (response) {
-            let proteinInfo = JSON.stringify(response.nutrition.caloricBreakdown.percentProtein);
-            let carbInfo = JSON.stringify(response.nutrition.caloricBreakdown.percentCarbs);
-            let fatInfo = JSON.stringify(response.nutrition.caloricBreakdown.percentFat)
-            console.log('percentProtein is: ', JSON.stringify(response.nutrition.caloricBreakdown.percentProtein));
-            console.log('here is the response: ', response);
-            console.log('ingredient name: ', response.name);
-            alert(`Caloric Breakdown for ${ingredient}:\n\n Percent Protein: ${proteinInfo} %\n Percent Carbs: ${carbInfo}%\n Percent Fat: ${fatInfo}`);
-            
-            ;
+            let nutrients = response.nutrition.nutrients;
+            const importantNutrients = extractNutrients(nutrients);
+            alert(`Nutritional Information for ${ingredient}:\n${importantNutrients}`);
         });
 
     });
