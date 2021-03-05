@@ -79,6 +79,7 @@ const itemInput = document.getElementById("new-item"); // Add a new item
 const addButton = document.getElementsByTagName("button")[0]; // First button
 const groceriesToBuy = document.getElementById("groceries"); // ul of #groceries
 const whatsInTheFridge = document.getElementById("in-fridge"); // in-fridge
+const postRecipe = document.getElementById("postRecipe");
 
 
 // New task list item
@@ -242,6 +243,17 @@ $("#search_submit").on("click", function (event) {
     lookupRecipe();
 });
 
+function createRecipe(recipe) {
+    const recipeDiv = document.createElement("div");
+    recipeDiv.innerText = recipe.title;
+
+    const image = document.createElement("img");
+    image.src = recipe.image;    
+
+    recipeDiv.appendChild(image);
+    return recipeDiv;
+};
+
 function lookupRecipe() {
     var ingredients = $("#search").val();
     apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
@@ -250,21 +262,26 @@ function lookupRecipe() {
         url: searchRecipe,
         method: "GET"
     }).then(function (response) {
-        console.log('response for recipe based on ingridents input: ', response);
+        console.log('response for recipe based on ingredients input: ', response);
+        for (let i = 0; i < response.length; i++) {
+            const recipe = response[i];
+            const recipeDiv = createRecipe(recipe);
+            postRecipe.appendChild(recipeDiv);
+        }
+    });
+};
 
-    })
-}
-
+// Get specific nutritional information from nutrients array
 function extractNutrients(nutrients) {
     let result = '';
-    const wantedNutrients = ['Calories', 'Sugar', 'Fiber', 'Carbohydrates', 'Sodium', 'Protein', 'Saturated  Fat'];
+    const wantedNutrients = ['Calories', 'Fat', 'Saturated Fat', 'Carbohydrates', 'Net Carbohydrates', 'Sugar', 'Cholesterol', 'Fiber', 'Sodium', 'Protein'];
     for (const nutrient of nutrients) {
         if (wantedNutrients.includes(nutrient.title)) {
             result = result + `${nutrient.title}: ${nutrient.amount}\n`;
         }
     }
     return result;
-}
+  };
 
 // API - search ingredients
 function getIngredientInfoAjaxCall(event) {
@@ -289,8 +306,8 @@ function getIngredientInfoAjaxCall(event) {
             method: "GET"
         }).then(function (response) {
             let nutrients = response.nutrition.nutrients;
-            const importantNutrients = extractNutrients(nutrients);
-            alert(`Nutritional Information for ${ingredient}:\n${importantNutrients}`);
+            const nutritionInfo = extractNutrients(nutrients);
+            alert(`Nutritional Information for ${ingredient}:\n\n${nutritionInfo}`);
         });
 
     });
