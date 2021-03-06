@@ -14,12 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "Rr453329",
-  
-    "database": "grocerylist_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "use_env_variable": "JAWSDB_URL"
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
   }
 }
