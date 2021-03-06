@@ -86,7 +86,7 @@ const placeIngredient = (ingredientData) => {
 const itemInput = document.getElementById("new-item"); // Add a new item
 const addButton = document.getElementsByTagName("button")[0]; // First button
 const groceriesToBuy = document.getElementById("groceries"); // ul of #groceries
-const whatsInTheFridge = document.getElementById("in-fridge"); // in-fridge
+const whatsInTheFridge = document.getElementById("in-fridge");
 const postRecipe = document.getElementById("postRecipe");
 
 
