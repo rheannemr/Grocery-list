@@ -254,6 +254,7 @@ function createRecipe(recipe) {
     recipeDiv.innerText = recipe.title;
 
     const image = document.createElement("img");
+    image.className = "recipe-image";
     image.src = recipe.image;    
 
     recipeDiv.appendChild(image);

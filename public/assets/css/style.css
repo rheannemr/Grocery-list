@@ -19,10 +19,24 @@
     height: 50vh;
   }
 
-  .ingredients, .recipes, p, ul, #search_submit {
+  .ingredients, .recipes, p, ul, #search_submit, input#search, div#postRecipe {
     font-family: 'Montserrat Alternates', sans-serif;
   }
 
+  section {
+    align-items: center;
+  }
+
+  div#postRecipe {
+    margin: 10px;
+    text-align: center;
+  }
+
+  .card>#postRecipe>div>img {
+    border: outset 5px;
+    border-color: rgb(255, 89, 0);
+
+  }
 
   .container {
     display: block;
@@ -56,6 +70,7 @@
     border: 0px;
     color: rgb(255, 89, 0);
     font-size: 15px;
+    margin: 10px;
   }
 
   button {
