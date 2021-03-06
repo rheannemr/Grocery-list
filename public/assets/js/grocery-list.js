@@ -143,7 +143,7 @@ const createNewItemElement = function (taskString, type) {
 }
 
 const addItem = function () {
-    console.log("Add item...");
+    // Add item
     insertIngredient({
         name: itemInput.value,
         inFridge: false
@@ -161,8 +161,8 @@ const addItem = function () {
 
 // Edit an existing item
 const editItem = function () {
-    console.log("Edit item...");
-    console.log("Change 'edit' to 'save'");
+    // Edit item
+    // Change edit to save
 
     const listItem = this.parentNode;
 
@@ -185,18 +185,18 @@ const editItem = function () {
 
 // Delete item
 const deleteItem = function () {
-    console.log("Delete item...");
+    // Delete item
     const listItem = this.parentNode;
     const ul = listItem.parentNode;
     // Remove the parent list item from the ul.
-    console.log('delete item id +++', this.id);
+    // Delete item id +++', this.id
     ul.removeChild(listItem);
     handleDeleteIngredientButton(this.id || 0);
 }
 
 // Mark task completed
 const itemBought = function () {
-    console.log("Move to fridge...");
+    // Move to fridge
 
     // Append the item to the #in-fridge
     const listItem = this.parentNode;
@@ -205,7 +205,7 @@ const itemBought = function () {
 }
 
 const backToGroceryList = function () {
-    console.log("Move back to groceries to buy...");
+    // Move back to groceries to buy...
     // Item is finished/eaten and needs to be bought again
     // When the checkbox is unchecked, append the item to the #groceries
     const listItem = this.parentNode;
@@ -215,7 +215,7 @@ const backToGroceryList = function () {
 
 // I think this is where we add AJAX calls?
 const ajaxRequest = function () {
-    console.log("AJAX Request");
+
 }
 
 // The glue to hold it all together.
@@ -225,7 +225,7 @@ addButton.addEventListener("click", addItem);
 addButton.addEventListener("click", ajaxRequest);
 
 const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
-    console.log("bind list item events");
+    // Bind list item events
     // Select ListItems children
     const checkBox = taskListItem.querySelector("input[type=checkbox]");
     const editButton = taskListItem.querySelector("button.edit");
