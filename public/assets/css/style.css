@@ -14,7 +14,7 @@
             justify-content: center;
   }
   .footer-section {
-    background: url("../img/footerB.png") 60% no-repeat;
+    background: url("../img/footer.png") 60% no-repeat;
     background-size: cover;
     height: 50vh;
   }
