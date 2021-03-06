@@ -63,7 +63,7 @@ const handleDeleteIngredientButton = (id) => {
 
     }).then(() => {
         // document.getElementById("groceries").innerHTML = "";
-        location.reload();
+        //location.reload();
         getIngredients;
     });
 }
