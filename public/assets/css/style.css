@@ -30,11 +30,17 @@
   div#postRecipe {
     margin: 10px;
     text-align: center;
+    font-size: 23px;
   }
 
   .card>#postRecipe>div>img {
-    border: outset 5px;
-    border-color: rgb(255, 89, 0);
+    border: outset 6px;
+    padding: 5px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 20%;
+    border-color: #ff7b88;
+
 
   }
 
