@@ -243,22 +243,6 @@ const bindItemEvents = function (taskListItem, checkBoxEventHandler) {
     nutritionButton.onclick = getIngredientInfoAjaxCall;
 }
 
-// Commented out because I don't know if we need it... (lines 206-218)
-
-//     // Cycle over groceriesToBuy ul list items
-//     for (var i=0; i<groceriesToBuy.children.length; i++){
-
-//         //bind events to list items children(itemBought)
-//         bindItemEvents(groceriesToBuy.children[i],itemBought);
-//     }
-
-
-//     // Cycle over whatsInTheFridge ul list items
-//     for (var i=0; i<whatsInTheFridge.children.length; i++) {
-//     // Bind events to list items children(backToGroceryList)
-//         bindItemEvents(whatsInTheFridge.children[i],backToGroceryList);
-// }
-
 // API - search recipe by ingredients
 $("#search_submit").on("click", function (event) {
     event.preventDefault();
