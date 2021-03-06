@@ -1,6 +1,6 @@
 # Grocery-list
 
-Description of application
+The Grocery list application will help any user upon all their grocery excursions. The user can simply log what they need to buy onto their list and once it's purchased, they will be able to move it to their fridge list. The user has the ability to move it back and forth for future grocery trips, and may also delete the item if it's no longer needed. On top of the grocery list, the user will be able to search up recipe ideas based on the ingredients they have/need.
 
 ## Table of Contents
 
@@ -9,7 +9,6 @@ Description of application
 - [Technologies](#technologies)
 - [Summary](#summary)
 - [Authors](#authors)
-- [License](#license)
 
 ## General Info
 
@@ -30,8 +29,12 @@ Grocery list meets the following criteria:
   THEN I mark the checkbox and it is pushed to 'What to buy...' <br />
   WHEN I am finished with an item in my fridge <br />
   THEN I hit the delete button
+  WHEN I want to search a recipe <br />
+  THEN I type the ingredients into the search bar
 
 ## Link to Deployed Application
+
+https://the-grocery-list.herokuapp.com/
 
 ## Technologies
 
@@ -45,6 +48,7 @@ This project is created with:
 - [ESlint](https://eslint.org/)
 - [HTML](https://html.com/)
 - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+- [Foundation](https://get.foundation/)
 
 APIs used:
 
@@ -52,7 +56,7 @@ APIs used:
 
 ## Summary
 
-Summary of Application
+An app to help you with all your grocery shopping trips; You can add to your shopping list, keep track of what's in your fridge, and most importantly, whip up a delicious recipe with what you have!
 
 ## Authors
 
@@ -60,5 +64,3 @@ Summary of Application
 - [Jiaqian Zhao](https://github.com/JZSweet)
 - [Rheanne Reyes](https://github.com/rheannemr)
 - [Tina Armstead](https://github.com/tmarmstead)
-
-## License
