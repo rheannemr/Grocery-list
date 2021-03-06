@@ -263,7 +263,7 @@ function createRecipe(recipe) {
 
 function lookupRecipe() {
     var ingredients = $("#search").val();
-    apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
+    apiKey = '9052771813014831aac813045b50f819'
     let searchRecipe = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&apiKey=${apiKey}`
     $.ajax({
         url: searchRecipe,
@@ -294,7 +294,7 @@ function extractNutrients(nutrients) {
 function getIngredientInfoAjaxCall(event) {
 
     let ingredient = event.target.parentElement.querySelector("label").innerText;
-    apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
+    apiKey = '9052771813014831aac813045b50f819'
     let searchIngredient = `https://api.spoonacular.com/food/ingredients/search?minProteinPercent=0&maxProteinPercent=100&minFatPercent=0&maxFatPercent=100&minCarbsPercent=0&maxCarbsPercent=100&metaInformation=true&intolerances=dairy&sortDirection=desc&offset=0&number=1&apiKey=${apiKey}&=&query=${ingredient}`
     $.ajax({
         url: searchIngredient,
@@ -305,7 +305,7 @@ function getIngredientInfoAjaxCall(event) {
         let id = response.results[0].id;
         let amount = 1
         let unit = 'piece'
-        apiKey = 'c760c8d7cdcc4e0eb2715fbe02f8774e'
+        apiKey = '9052771813014831aac813045b50f819'
         let getIngredientInfo = `https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`
 
         $.ajax({
