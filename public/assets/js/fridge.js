@@ -1,5 +1,6 @@
-const insertIngredient = (ingredientData) => {
-    fetch('/api/in-fridge', {
+const updateIngredient = (ingredientData) => {
+    // find a way to get id and put it in the route
+    fetch(`/api/in-fridge/${id}`, {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
@@ -19,12 +20,18 @@ const getIngredients = () => {
         },
     }).then((res) => res.json())
     .then((data) => {
+        // make sure you're adding to the fridge section
         const addRows = [];
         for (let i = 0; i < data.length; i++) {
             addRows.push(createIngredientRow(data[i]));
        }
+       // render to the fridge list instead
        renderIngredientsList(addRows);
        ingredientInput.value = ''; 
         })
         .catch((error) => console.error('Error:', error))
     };
+
+// when checkbox is clicked, call updateIngredient, change from not inFridge to yes inFridge. make sure to get the id from the click
+// when page is refreshed/loaded, call getIngredients, where inFridge === 1
+getIngredients();

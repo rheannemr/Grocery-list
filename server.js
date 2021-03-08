@@ -24,29 +24,10 @@ app.use(express.static('public'));
 
 // Invoke routes
 app.use(groceryListRoutes);
+app.use(inFridgeRoute);
 app.use(htmlRoute);
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 });
-
-
-
-
-
-// const express = require('express');
-// const exphbs = require('express-handlebars');
-// const routes = require('./routes/grocery_routes.js');
-// const app = express();
-
-// const PORT = process.env.PORT || 8080 ;
-
-// app.use(express.static(__dirname + '/public/'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true}));
-
-
-// app.listen(PORT, function(){
-//     console.log(`app is listening on port: ${PORT}`);
-// });
 
