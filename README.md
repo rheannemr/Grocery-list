@@ -58,6 +58,10 @@ APIs used:
 
 An app to help you with all your grocery shopping trips; You can add to your shopping list, keep track of what's in your fridge, and most importantly, whip up a delicious recipe with what you have!
 
+## Image
+![Home page](public\assets\img\homepage.png)
+
+
 ## Authors
 
 - [Haley Halsey](https://github.com/hshalsey)
